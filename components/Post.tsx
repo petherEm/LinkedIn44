@@ -32,7 +32,7 @@ const Post = ({ post }: { post: IPostDocument }) => {
 
         <div className="flex justify-between flex-1">
           <div>
-            <p>
+            <div>
               {post.user.firstName} {post.user.lastName}
               {isAuthor && (
                 <Badge className="ml-2" variant="secondary">
@@ -40,7 +40,7 @@ const Post = ({ post }: { post: IPostDocument }) => {
                   (You)
                 </Badge>
               )}
-            </p>
+            </div>
             <p className="text-xs text-gray-400">
               @{post.user.firstName}
               {post.user.firstName} - {post.user.userId.toString().slice(-4)}
