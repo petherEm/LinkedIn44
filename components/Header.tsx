@@ -1,19 +1,19 @@
-import { SignedIn, SignedOut, UserButton, SignInButton } from "@clerk/nextjs";
-import { Button } from "@/components/ui/button";
-
-import Image from "next/image";
-import Link from "next/link";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import {
   Briefcase,
   HomeIcon,
-  MessageSquare,
+  MessagesSquare,
   SearchIcon,
   UsersIcon,
 } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "./ui/button";
 
-const Header = () => {
+async function Header() {
   return (
     <div className="flex items-center p-2 max-w-6xl mx-auto">
+      {/* Logo */}
       <Image
         className="rounded-lg"
         src="https://links.papareact.com/b3z"
@@ -22,11 +22,10 @@ const Header = () => {
         alt="logo"
       />
 
+      {/* Search */}
+      {/* SearchIcon */}
       <div className="flex-1">
-        <form
-          action=""
-          className="flex items-center space-x-1 bg-gray-100 p-2 rounded-md flex-1 mx-2 max-w-96"
-        >
+        <form className="flex items-center space-x-1 bg-gray-100 p-2 rounded-md flex-1 mx-2 max-w-[300px]">
           <SearchIcon className="h-4 text-gray-600" />
           <input
             type="text"
@@ -37,28 +36,30 @@ const Header = () => {
       </div>
 
       <div className="flex items-center space-x-4 px-6">
-        <Link href="/" className="icon">
-          <HomeIcon className="h-5" />
+        <Link href="" className="icon">
+          <HomeIcon className="h-5 " />
           <p>Home</p>
         </Link>
-        <Link href="/" className="icon hidden md:flex">
-          <MessageSquare className="h-5" />
-          <p>Messaging</p>
-        </Link>
-        <Link href="/" className="icon hidden md:flex">
+
+        <Link href="" className="icon hidden md:flex">
           <UsersIcon className="h-5" />
           <p>Network</p>
         </Link>
-        <Link href="/" className="icon hidden md:flex">
+
+        <Link href="" className="icon hidden md:flex">
           <Briefcase className="h-5" />
           <p>Jobs</p>
         </Link>
 
-        {/* UserButton if signed-in */}
+        <Link href="" className="icon">
+          <MessagesSquare className="h-5" />
+          <p>Messaging</p>
+        </Link>
+
         <SignedIn>
           <UserButton />
         </SignedIn>
-        {/* LoginButton if signed-out */}
+
         <SignedOut>
           <Button asChild variant="secondary">
             <SignInButton />
@@ -67,6 +68,6 @@ const Header = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Header;
